@@ -1,0 +1,31 @@
+class Solution {
+    public int trap(int[] height) {
+        int n=height.length;
+        int maxLbar=height[0];
+
+        int water[]=new int[n];
+
+        for(int i=1;i<n;i++){
+            int area=(maxLbar-height[i])*1;
+            water[i]=(area>0) ? area : 0 ;
+            maxLbar=Math.max(maxLbar,height[i]);
+        }
+
+        int maxRbar=height[n-1];
+        for(int i=n-2;i>=0;i--){
+            int area=(maxRbar-height[i])*1;
+            if(area==water[i]) break;
+            water[i]=(area>0) ? Math.min(water[i],area) : 0 ;
+            maxRbar=Math.max(maxRbar,height[i]);
+        }
+
+        water[n-1]=0;
+
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=water[i];
+        }
+
+        return sum;
+    }
+}
