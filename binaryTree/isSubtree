@@ -1,0 +1,21 @@
+public static boolean isIdentical(Node node, Node subRoot){
+    if(node==null && subRoot==null){
+        return true;
+    }
+    if(node==null || subRoot==null || node.data!=subRoot.data){
+        return false;
+    }
+
+    return isIdentical(node.left,subRoot.left) && isIdentical(node.right,subRoot.right);
+}
+public static boolean isSubTree(Node root, Node subRoot){
+    if(root==null){
+        return false;
+    }
+    if(root.data==subRoot.data){
+        if(isIdentical(root,subRoot)){
+            return true;
+        }
+    }
+    return isSubTree(root.left,subRoot)||isSubTree(root.right,subRoot);
+}

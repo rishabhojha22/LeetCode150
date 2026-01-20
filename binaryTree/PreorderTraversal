@@ -1,0 +1,6 @@
+public static void preorderTraversal(Node root){
+    if(root==null)return ;
+    System.out.print(root.data + " ");
+    preorderTraversal(root.left);
+    preorderTraversal(root.right);
+}

@@ -1,0 +1,5 @@
+// TC = O(n)
+ public static int sumOfNodes(Node root){
+    if(root==null)return 0;
+    return sumOfNodes(root.left)+sumOfNodes(root.right)+root.data;
+}

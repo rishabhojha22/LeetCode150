@@ -1,0 +1,17 @@
+//Approach - 2 ---TC=O(n)
+static class pair{
+    int ht;
+    int dia;
+    pair(int ht,int dia){
+        this.ht=ht;
+        this.dia=dia;
+    }
+}
+public static pair diameter1(Node root){
+    if(root==null)return new pair(0,0);
+    pair left=diameter1(root.left);
+    pair right=diameter1(root.right);
+    int dia=Math.max(left.dia,Math.max(right.dia,left.ht+right.ht+1));
+    int ht=Math.max(left.ht,right.ht)+1;
+    return new pair(ht,dia);
+}
